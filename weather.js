@@ -3,9 +3,10 @@ let button = document.getElementById('weatherBtn');
 
 button.onclick = function () {
 
-    document.getElementById('weatherContainer').style.display = 'block';
-
     let geoSuccess = function (position) {
+
+        document.getElementById('weatherContainer').style.display = 'block';
+
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
 
