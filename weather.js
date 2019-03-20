@@ -45,11 +45,24 @@ function createWeatherData(data) {
     document.getElementById('location').innerHTML = `Your current location : ${data.name}` ;
     document.getElementById('lat').innerHTML = data.coord.lat ;
     document.getElementById('long').innerHTML = data.coord.lon ;
-    document.getElementById('temp').innerHTML = data.main.temp;
+    document.getElementById('temp').innerHTML = `${toFahrenheit(data.main.temp)} &#8457; ( ${toCelsius(data.main.temp)} &#8451; )`;
     document.getElementById('visibility').innerHTML =  data.weather[0].main;
     document.getElementById('sunrise').innerHTML = toLocalTime(data.sys.sunrise);
     document.getElementById('sunset').innerHTML = toLocalTime(data.sys.sunset);
     document.getElementById('date').innerHTML = toLocalDate(new Date());
+}
+
+//to convert from Kelvin to Fahrenheit
+function toFahrenheit(temp){
+    let currentTemp = ( ((temp - 273.15)*1.8) + 32 );
+    return currentTemp.toFixed(2);
+}
+
+//to convert from Kelvin to Celsius
+function toCelsius(temp){
+    let currentTemp = (temp - 273.15);
+    
+    return currentTemp.toFixed(2);
 }
 
 // to convert into lcoal time
